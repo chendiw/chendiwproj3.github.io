@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<script type="text/javascript" src="http://latex.codecogs.com/latexit.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+<!-- Header -->
+<header class="w3-display-container w3-content w3-center" style="max-width:1500px">
+  <img class="w3-image" src="face_head.jpg" alt="" width="900px">
+  <div class="w3-display-middle w3-padding-large w3-border w3-wide w3-text-light-grey w3-center">
+    <h1 class="w3-hide-medium w3-hide-small w3-xxxlarge">CS194-26 FACE MORPHING</h1>
+    <h5 class="w3-hide-large" style="white-space:nowrap">CS194-26 FACE MORPHING</h5>
+    <h3 class="w3-hide-medium w3-hide-small">Chendi Wu</h3>
+  </div>
+  
+<!-- Navbar (placed at the bottom of the header image) -->
+  <div class="w3-bar w3-light-grey w3-round w3-display-bottommiddle w3-hide-small" style="bottom:-16px">
+    <a href="#" class="w3-bar-item w3-button">Home</a>
+    <a href="#Morph Sequence" class="w3-bar-item w3-button">Morph Sequence</a>
+    <a href="#Population" class="w3-bar-item w3-button">Population</a>
+    <a href="#Caricature" class="w3-bar-item w3-button">Caricature</a>
+    <a href="#Smile and Makeup" class="w3-bar-item w3-button">Smile and Makeup</a>
+    <a href="#Class Morph Music Video" class="w3-bar-item w3-button">Class Morph Music Video</a>
+  </div>
+</header>
+
+<!-- Page content -->
+<div class="w3-content w3-padding-large w3-margin-top" id="Morph Sequence">
+	<!-- About Container -->
+	<div class="w3-container" id="about">
+	  <div class="w3-content" style="max-width:800px">
+	    <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">Defining Correspondences</span></h5>
+	    <p>The first step to create a face morphing sequence is to define pairs of correspondences between the images. These correspondences should pinpoint the most significant features that morphing bases on. Here, I selected 45 pairs of correspondences, denoted by green dots, for the photos of George and me.</p>
+	</div>
+
+	<div align='middle'>
+		<table style="width=100%">
+			<tr>
+				<td>
+					<img src="metogeorge/george.jpg" align="middle" width="200px" />
+					<figcaption align="middle">
+					    Original George
+					</figcaption>
+				</td>
+				<td>
+					<img src="metogeorge/metogeorge.jpg" align="middle" width="200px" />
+					<figcaption align="middle">
+						Original me 
+					</figcaption>
+				</td>
+				<td>
+					<img src="metogeorge/george_dot2.png" align="middle" width="200px" />
+					<figcaption align="middle">
+					    George with points picked
+					</figcaption>
+				</td>
+				<td>
+					<img src="metogeorge/me_dot1.png" align="middle" width="200px" />
+					<figcaption align="middle">
+					    Me with points picked
+					</figcaption>
+				</td>					
+			</tr>
+		</table>
+	</div>
+
+	<div class="w3-container" id="about">
+	  <div class="w3-content" style="max-width:800px">
+	    <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">Computing the "Mid-Way Face" and morphing sequence</span></h5>
+	    <p> To create any intermediary face I along the morphing sequence from the starting image S to the destination image D, the following steps are performed:
+	    	<ol align='left'>
+			<li>Calculate the target correspondences in the intermediary face by taking a weighted average of S and D's point coordinates.</li>
+			<li>Use Delaunay Triangulation method to find a triangulation of the points on S, D and I.</li>
+			<li>For each triangle, we compute affine transformation matrices T/T' mapping triangle coordinates in S/D to those in I. Then inverse warping and bilinear interpolation are used to find the corresponding pixel values from S and D, which are then weighted by a dissolving fraction to become the pixel values in the triangle in intermediary image I. </li>
+			</ol>
+		As an example, the "mid-way face" is presented here, which captures 1/2 of the shape and the color of both images. On the right of the "mid-way face" are the morphing sequence videos consisting of 45 intermediary morphed faces (including the original starting and destination images).
+		</p>
+	</div>
+
+	<div align='middle'>
+		<table width="600px">
+			<tr>
+				<td>
+					<img src="metogeorge/metogeorge22.jpg" align="middle" width="300px" />
+					<figcaption align="middle">
+					    Midway from George to me
+					</figcaption>
+				</td>
+				<td>
+					<img src="metogeorge/george_to_me.gif" align="middle" width="300px" />
+					<figcaption align="middle">
+					    Midway from George to me
+					</figcaption>
+				</td>					
+			</tr>
+		</table>
+	</div>
+	<div align='middle'>
+		<table width="600px">
+			<tr>
+				<td>
+					<img src="wotozhuyin/wotozhuyin22.jpg" align="middle" width="300px" />
+					<figcaption align="middle">
+					    Another pair I played with
+					</figcaption>
+				</td>
+				<td>
+					<img src="wotozhuyin/metozhuyin.gif" align="middle" width="300px" />
+					<figcaption align="middle">
+					    Her name is Zhu Yin
+					</figcaption>
+				</td>					
+			</tr>
+		</table>
+	</div>
+<!-- End page content -->
+</div>
+
+<!-- Page content -->
+<div class="w3-content w3-padding-large w3-margin-top" id="Population">
+
+	<!-- About Container -->
+	<div class="w3-container" id="about">
+	  <div class="w3-content" style="max-width:800px">
+	    <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">The "Mean Face" of a Population</span></h5>
+	    <p>In this part, I created the mean face of Brazillian researchers from the pre-labeled dataset: https://fei.edu.br/~cet/facedatabase.html. It contains 200 faces with 46 labeled points, among which 100 faces are emotionless and 100 are smiling. I chose only the smiling set of faces, and manually added points to the four corners of each image. To create the mean face, I first compute the target correspondences by averaging all points of the 100 images, and then repeat the process from the previous part to average the shape and color of each face. </p>
+	    <p>Here are some sample faces from thee dataset (left), and the resulting images of them warped to the average correspondences (right):</p>
+	</div>
+
+	<div align='middle'>
+		<table style="width=800px">
+			<tr>
+				<td>
+					<img src="brazilian_researcher/182b.jpg" align="middle" width="200px" />
+					<figcaption align="middle">
+					    Original
+					</figcaption>
+				</td>
+				<td>
+					<img src="brazilian_researcher/182b_warped.jpg" align="middle" width="200px" />
+					<figcaption align="middle">
+					    Warped to avg
+					</figcaption>
+				</td>
+				<td>
+					<img src="brazilian_researcher/21b.jpg" align="middle" width="200px" />
+					<figcaption align="middle">
+					    Original
+					</figcaption>
+				</td>
+				<td>
+					<img src="brazilian_researcher/21b_warped.jpg" align="middle" width="200px" />
+					<figcaption align="middle">
+					    Warped to avg
+					</figcaption>
+				</td>					
+			</tr>
+		</table>
+	</div>
+	<div class="w3-container" id="about">
+	  <div class="w3-content" style="max-width:800px">
+	    <p>Here is the mean face of all 100 smiling Brazilian researchers, which is just a nice smiley face with no prominent features (strong personal features are averaged out!):</p>
+	</div>
+	<div align='middle'>
+		<table style="width=600px">
+			<tr>
+				<td>
+					<img src="brazilian_researcher/mid_population.jpg" align="middle" width="300px" />
+					<figcaption align="middle">
+					    "Mean face" of Brazilian researchers
+					</figcaption>
+				</td>					
+			</tr>
+		</table>
+	</div>
+
+
+	<div class="w3-container" id="about">
+	  <div class="w3-content" style="max-width:800px">
+	    <p>Here are two experiments of morphing the "mean population" face to the geometry of my face and morphing my face to the geometry of the "mean population" face. The shapes are well-kept, but results are hilarious. Guess I just don't look like a Brazilian:)</p>
+	</div>
+
+	<div align='middle'>
+		<table style="width=100%">
+			<tr>
+				<td>
+					<img src="brazilian_researcher/mid_to_me.jpg" align="middle" width="300px" />
+					<figcaption align="middle">
+					    Mean population to me
+					</figcaption>
+				</td>
+				<td>
+					<img src="brazilian_researcher/me_to_mid_colored.jpg" align="middle" width="300px" />
+					<figcaption align="middle">
+					    Me to mean population (Oh)
+					</figcaption>
+				</td>					
+			</tr>
+		</table>
+	</div>
+<!-- End page content -->
+</div>
+
+
+<div class="w3-content w3-padding-large w3-margin-top" id="Caricature">
+	<!-- About Container -->
+	<div class="w3-container" id="about">
+	  <div class="w3-content" style="max-width:800px">
+	    <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">Caricatures</span></h5>
+	    <p> Subtracting the mean face features from our face features capture the prominent features of our faces. Caricatures can be made in this way. Hence, different from previous parts, the targeting correspondences are calculated using the formula: target_pts = mean_pts + alpha * (my_pts - mean_pts), alpha being a value smaller than 0 or larger than 1. Then the same morphing technique is applied to triangles, mapping the shape and color to the target images (caricatures). I created two caricatures using alpha = -1 and alpha = 1.5:</p>
+	  </div>
+	</div>
+
+	<div align='middle'>
+		<table style="width=100%">
+			<tr>
+				<td>
+					<img src="caricature/me.jpg" align="middle" width="250px" />
+					<figcaption align="middle">
+					    Me again
+					</figcaption>
+				</td>
+				<td>
+					<img src="caricature/cari_minus.jpg" align="middle" width="250px" />
+					<figcaption align="middle">
+					    Alpha = -1
+					</figcaption>
+				</td>
+				<td>
+					<img src="caricature/cari_plus.jpg" align="middle" width="250px" />
+					<figcaption align="middle">
+					    Alpha = 1.5
+					</figcaption>
+				</td>					
+			</tr>
+		</table>
+	</div>
+
+<!-- End page content -->
+</div>
+
+<div class="w3-content w3-padding-large w3-margin-top" id="Smile and Makeup">
+	<!-- About Container -->
+	<div class="w3-container" id="about">
+	  <div class="w3-content" style="max-width:800px">
+	    <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">Bells & Whistles: Smile and Makeup</span></h5>
+	    <p> In this part, I morphed Michael Fassbender's stern face to my smiling face. Michael smiled when only morphing the shape, and he got makeup and a more feminine look when morphing both the shape and color!</p>
+	  </div>
+	</div>
+
+	<div align='middle'>
+		<table style="width=100%">
+			<tr>
+				<td>
+					<img src="bells/me1_aligned.png" align="middle" width="200px" />
+					<figcaption align="middle">
+					    Me again
+					</figcaption>
+				</td>
+				<td>
+					<img src="bells/shark.jpg" align="middle" width="200px" />
+					<figcaption align="middle">
+					    Michael Fassbender
+					</figcaption>
+				</td>
+				<td>
+					<img src="bells/justshape.png" align="middle" width="200px" />
+					<figcaption align="middle">
+					    Just shape (smiling shark)
+					</figcaption>
+				</td>
+				<td>
+					<img src="bells/shark_makeup1.png" align="middle" width="200px" />
+					<figcaption align="middle">
+					    Shape and appearance
+					</figcaption>
+				</td>					
+			</tr>
+		</table>
+	</div>
+<!-- End page content -->
+</div>
+
+<div class="w3-content w3-padding-large w3-margin-top" id="Class Morph Music Video">
+	<div class="w3-container" id="about">
+	  <div class="w3-content" style="max-width:800px">
+	    <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">Bells & Whistles: Class Morph Music Video</span></h5>
+	    <p> I participated in the music video with some other classmates and here is the link to the whole video: https://youtu.be/O3vouduLS3w</p>
+	    <p> Also, here is my part from it:</p>
+	  </div>
+	</div>
+
+	  	<div align='middle'>
+		<table style="width=100%">
+			<tr>
+				<td>
+					<img src="bells/class_morph.gif" align="middle" width="300px" />
+					<figcaption align="middle">
+					    Me morphed to Bunny
+					</figcaption>
+				</td>					
+			</tr>
+		</table>
+	</div>
+	</div>
+
+<!-- End page content -->
+</div>
+
+<div class="w3-content w3-padding-large w3-margin-top" id="Conclusion">
+	<div class="w3-container" id="about">
+	  <div class="w3-content" style="max-width:800px">
+	    <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">Conclusion</span></h5>
+	    <div class="w3-panel w3-leftbar w3-light-grey">
+	      <p><i>This is a cool project! I got to make my friend a birthday video using her photos over ten years using the techniques from this project :) It's one of the best things in life to have a friend for ten years, and even better to have her for the rest of my life (I hope). By the time I submit this project, her birthday has already passed, but still, happy belated birthday!</i></p>
+	    </div>
+	  </div>
+
+	</div>
+</div>
+
+
+</body>
+</html>
